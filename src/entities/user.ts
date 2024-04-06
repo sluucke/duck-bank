@@ -1,7 +1,4 @@
-// import { User } from '../interfaces/user';
-// TODO: Create an folder interfaces inside src and create a file user.ts with interface below
-
-import { IUser } from "../interface/IUser";
+import { IUser } from "../interfaces/IUser";
 
 export class User {
   private props: IUser;
@@ -20,10 +17,15 @@ export class User {
       name: props.name,
       email: props.email,
       password: props.password,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
+      createdAt: props.createdAt,
+      updatedAt: props.updatedAt,
     };
   }
+
+  get id() {
+    return this.props.id;
+  }
+
   get name() {
     return this.props.name;
   }
@@ -34,5 +36,17 @@ export class User {
 
   get password() {
     return this.props.password;
+  }
+
+  set name(name: string) {
+    this.props.name = name;
+  }
+
+  set email(email: string) {
+    this.props.email = email;
+  }
+
+  set password(password: string) {
+    this.props.password = password;
   }
 }

@@ -1,31 +1,30 @@
-import { ICards } from "../interface/ICards";
+import { ICards } from "../interfaces/ICards";
 import { User } from "./user";
 
-
 export class Cards {
-    private props:ICards;
+  private props: ICards;
 
-    constructor(props: ICards) {
-        this.props = {
-            id: props.id,
-            card_number: props.card_number,
-            security_number: props.security_number,
-            owner: props.owner,
-            password: props.password,
-            generatedAt: props.generatedAt,
-            expiresAt: props.expiresAt//define a date of 2 years validation 
-        };
-    }
+  constructor(props: ICards) {
+    this.props = {
+      id: props.id,
+      card_number: props.card_number,
+      security_number: props.security_number,
+      owner: props.owner,
+      password: props.password,
+      generatedAt: props.generatedAt,
+      expiresAt: props.expiresAt, //define a date of 2 years validation
+    };
+  }
 
-    get card_number(): string {
-        return this.props.card_number;
-    }
+  get card_number(): string {
+    return this.props.card_number;
+  }
 
-    get owner(): User {
-        return this.props.owner;
-    }
+  get owner(): User {
+    return this.props.owner;
+  }
 
-    get expirationDate(): Date {
-        return this.props.expiresAt;
-    }
+  get expirationDate(): Date {
+    return this.props.expiresAt;
+  }
 }
