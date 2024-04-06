@@ -1,6 +1,6 @@
 import { User } from "../entities/user";
 
-interface IFinantialAccount {
+export interface IFinantialAccount {
     id: number;
     pin: string;
     user: User;

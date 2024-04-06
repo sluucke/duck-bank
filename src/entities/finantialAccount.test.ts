@@ -15,8 +15,10 @@ test("should create a finantial account", () => {
         pin:"12345744",
         user: user,
         balance:0,
-        isActive:true
+        isActive:true,
+        createdAt: new Date().toISOString()
     });
+    
     expect(account).instanceOf(FinantialAccount);
 });
 

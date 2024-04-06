@@ -1,3 +1,6 @@
+import { IFinantialAccount } from "./../interface/IFinantialAccount";
+
+
 export class FinantialAccount {
 
     private props: IFinantialAccount;
@@ -22,8 +25,8 @@ export class FinantialAccount {
         return this.props.balance;
     }
 
-    get status() {
-        return this.props.status;
+    isActive() {
+        return this.props.isActive;
     }
 
 }

@@ -1,6 +1,8 @@
 // import { User } from '../interfaces/user';
 // TODO: Create an folder interfaces inside src and create a file user.ts with interface below
 
+import { IUser } from "../interface/IUser";
+
 export class User {
   private props: IUser;
 
