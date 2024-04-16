@@ -1,7 +1,7 @@
-import { User } from "../entities/user";
-import { UserRepository } from "../repositories/UserRepository";
-import { uuid } from "uuidv4";
-import { EncryptProvider } from "../providers/encrypt/EncryptProvider";
+import { User } from '@/entities/user';
+import { UserRepository } from '@/repositories/UserRepository';
+import { EncryptProvider } from '@/providers/encrypt/EncryptProvider';
+import { v4 } from 'uuid';
 
 interface CreateUserRequest {
   name: string;
@@ -12,16 +12,16 @@ interface CreateUserRequest {
 export class CreateUser {
   constructor(
     private userRepository: UserRepository,
-    private encryptProvider: EncryptProvider
+    private encryptProvider: EncryptProvider,
   ) {}
 
   async execute({ name, email, password }: CreateUserRequest) {
     if (await this.userRepository.findByEmail(email)) {
-      throw new Error("User already exists");
+      throw new Error('User already exists');
     }
 
     const user = new User({
-      id: uuid(),
+      id: v4(),
       name,
       email,
       password: await this.encryptProvider.hash(password),

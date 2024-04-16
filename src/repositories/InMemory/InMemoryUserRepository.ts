@@ -1,5 +1,5 @@
-import { User } from "../../entities/user";
-import { UserRepository } from "../UserRepository";
+import { User } from '@/entities/user';
+import { UserRepository } from '../UserRepository';
 
 export class InMemoryUserRepository implements UserRepository {
   public users: User[] = [];
@@ -18,7 +18,7 @@ export class InMemoryUserRepository implements UserRepository {
 
       return user;
     } else {
-      throw new Error("User not found");
+      throw new Error('User not found');
     }
   }
 
