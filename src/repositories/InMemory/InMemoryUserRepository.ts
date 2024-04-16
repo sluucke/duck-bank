@@ -13,7 +13,7 @@ export class InMemoryUserRepository implements UserRepository {
   async update(id: string, user: User): Promise<User> {
     const userExists = this.users.findIndex((u) => u.id === id);
 
-    if (userExists) {
+    if (userExists > -1) {
       this.users[userExists] = user;
 
       return user;
@@ -25,13 +25,13 @@ export class InMemoryUserRepository implements UserRepository {
   async findById(id: string): Promise<User | null> {
     const user = this.users.find((u) => u.id === id);
 
-    return user || null;
+    return user ?? null;
   }
 
   async findByEmail(email: string): Promise<User | null> {
     const user = this.users.find((u) => u.email === email);
 
-    return user || null;
+    return user ?? null;
   }
 
   /**

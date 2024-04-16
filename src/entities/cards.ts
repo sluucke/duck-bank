@@ -1,8 +1,8 @@
-import { ICards } from "../interfaces/ICards";
-import { User } from "./user";
+import { ICards } from '@/interfaces/ICards';
+import { User } from './user';
 
 export class Cards {
-  private props: ICards;
+  private readonly props: ICards;
 
   constructor(props: ICards) {
     this.props = {
@@ -12,7 +12,7 @@ export class Cards {
       owner: props.owner,
       password: props.password,
       generatedAt: props.generatedAt,
-      expiresAt: props.expiresAt, //define a date of 2 years validation
+      expiresAt: props.expiresAt, // define a date of 2 years validation
     };
   }
 

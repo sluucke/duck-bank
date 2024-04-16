@@ -1,5 +1,5 @@
-import { FinantialAccount } from "../entities/finantialAccount";
-import { User } from "../entities/user";
+import { FinantialAccount } from '../entities/finantialAccount';
+import { User } from '../entities/user';
 
 export interface ITransactions {
   id: number;

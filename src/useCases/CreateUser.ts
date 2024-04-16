@@ -11,13 +11,13 @@ interface CreateUserRequest {
 
 export class CreateUser {
   constructor(
-    private userRepository: UserRepository,
-    private encryptProvider: EncryptProvider,
-    private idProvider: IdentifierProvider,
+    readonly userRepository: UserRepository,
+    readonly encryptProvider: EncryptProvider,
+    readonly idProvider: IdentifierProvider,
   ) {}
 
-  async execute({ name, email, password }: CreateUserRequest) {
-    if (await this.userRepository.findByEmail(email)) {
+  async execute({ name, email, password }: CreateUserRequest): Promise<User> {
+    if ((await this.userRepository.findByEmail(email)) !== null) {
       throw new Error('User already exists');
     }
 
@@ -30,6 +30,6 @@ export class CreateUser {
       updatedAt: new Date().toISOString(),
     });
 
-    return this.userRepository.create(user);
+    return await this.userRepository.create(user);
   }
 }

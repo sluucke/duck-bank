@@ -1,15 +1,15 @@
-import { IUser } from "../interfaces/IUser";
+import { IUser } from '../interfaces/IUser';
 
 export class User {
-  private props: IUser;
+  private readonly props: IUser;
 
   constructor(props: IUser) {
     if (
-      new RegExp("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$").test(
-        props.email
-      ) === false
+      !new RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$').test(
+        props.email,
+      )
     ) {
-      throw new Error("Invalid email");
+      throw new Error('Invalid email');
     }
 
     this.props = {
@@ -20,6 +20,18 @@ export class User {
       createdAt: props.createdAt,
       updatedAt: props.updatedAt,
     };
+  }
+
+  set name(name: string) {
+    this.props.name = name;
+  }
+
+  set email(email: string) {
+    this.props.email = email;
+  }
+
+  set password(password: string) {
+    this.props.password = password;
   }
 
   get id() {
@@ -36,17 +48,5 @@ export class User {
 
   get password() {
     return this.props.password;
-  }
-
-  set name(name: string) {
-    this.props.name = name;
-  }
-
-  set email(email: string) {
-    this.props.email = email;
-  }
-
-  set password(password: string) {
-    this.props.password = password;
   }
 }

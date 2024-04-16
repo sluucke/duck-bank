@@ -1,8 +1,8 @@
-import { ITransactions } from "../interfaces/ITransactions";
-import { User } from "./user";
+import { ITransactions } from '../interfaces/ITransactions';
+import { User } from './user';
 
 export class Transactions {
-  private props: ITransactions;
+  private readonly props: ITransactions;
 
   constructor(props: ITransactions) {
     this.props = {

@@ -1,7 +1,7 @@
-import { IFinantialAccount } from "./../interfaces/IFinantialAccount";
+import { IFinantialAccount } from './../interfaces/IFinantialAccount';
 
 export class FinantialAccount {
-  private props: IFinantialAccount;
+  private readonly props: IFinantialAccount;
 
   constructor(props: IFinantialAccount) {
     this.props = {
