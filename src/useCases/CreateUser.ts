@@ -1,7 +1,7 @@
-import { User } from '@/entities/user';
+import { User } from '../entities/user';
 import { UserRepository } from '@/repositories/UserRepository';
 import { EncryptProvider } from '@/providers/encrypt/EncryptProvider';
-import { v4 } from 'uuid';
+import { IdentifierProvider } from '@/providers/identifier/IdentifierProvider';
 
 interface CreateUserRequest {
   name: string;
@@ -13,6 +13,7 @@ export class CreateUser {
   constructor(
     private userRepository: UserRepository,
     private encryptProvider: EncryptProvider,
+    private idProvider: IdentifierProvider,
   ) {}
 
   async execute({ name, email, password }: CreateUserRequest) {
@@ -21,7 +22,7 @@ export class CreateUser {
     }
 
     const user = new User({
-      id: v4(),
+      id: this.idProvider.generate(),
       name,
       email,
       password: await this.encryptProvider.hash(password),
