@@ -1,0 +1,61 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Customer {
+  id    String @id @default(uuid())
+  name  String
+  email String @unique
+
+  isActive  Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  deletedAt DateTime @default(now())
+
+  finantialAccounts FinantialAccount[]
+
+  @@map("customers")
+}
+
+model FinantialAccount {
+  id      String  @id @default(uuid())
+  pin     String
+  balance Decimal
+
+  customer   Customer @relation(fields: [customerId], references: [id])
+  customerId String
+
+  isActive  Boolean
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  deletedAt DateTime @default(now())
+
+  transactionsFrom        Transactions[] @relation("transactionFrom")
+  transactionsDestination Transactions[] @relation("transactionDestination")
+
+  @@map("finantial_accounts")
+}
+
+model Transactions {
+  id     String   @id @default(uuid())
+  amount Decimal
+  date   DateTime @default(now())
+
+  from                          FinantialAccount @relation("transactionFrom", fields: [fromFinantialAccountId], references: [id])
+  fromFinantialAccountId        String
+  destination                   FinantialAccount @relation("transactionDestination", fields: [destinationFinantialAccountId], references: [id])
+  destinationFinantialAccountId String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
+  @@map("transactions")
+}
