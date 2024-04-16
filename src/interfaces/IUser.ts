@@ -1,3 +1,5 @@
+import { FinantialAccount } from '@/entities/finantialAccount';
+
 export interface IUser {
   id: string;
   name: string;
@@ -5,4 +7,5 @@ export interface IUser {
   password: string;
   createdAt?: string;
   updatedAt?: string;
+  finantialAccounts: FinantialAccount[];
 }

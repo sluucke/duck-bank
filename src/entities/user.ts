@@ -16,6 +16,7 @@ export class User {
       id: props.id,
       name: props.name,
       email: props.email,
+      finantialAccounts: [],
       password: props.password,
       createdAt: props.createdAt,
       updatedAt: props.updatedAt,

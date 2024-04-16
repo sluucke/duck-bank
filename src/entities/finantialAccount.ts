@@ -8,6 +8,7 @@ export class FinantialAccount {
       id: props.id,
       pin: props.pin,
       user: props.user,
+      transactions: [],
       balance: props.balance,
       isActive: props.isActive,
       createdAt: props.createdAt,
