@@ -10,6 +10,7 @@ test('should create a finantial account', () => {
     id: 1,
     pin: '12345744',
     user,
+    transactions: [],
     balance: 0,
     isActive: true,
     createdAt: new Date().toISOString(),
